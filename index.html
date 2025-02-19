@@ -38,7 +38,47 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 <script>
 
-	//YOUR JAVASCRIPT GOES HERE
+	// Our two variables are declared here
+	// allergy_count tracks how many times the participant indicates they have allergies
+	// cold_count tracks how many times the participant indiciates they have a cold
+	// Both variables are initially set to zero because there have been no inputs yet
+        var allergy_count = 0;
+        var cold_count = 0;
+
+        // The function allergyadd(){ increases the allergy_count variable by 1 everytime the participant responds to a question in a way that suggests they have allergies
+	// Based on whether they push the yes or no button as a response to the question
+        function allergyAdd(){
+            allergy_count = allergy_count + 1;
+		
+
+        }
+
+	 // The function coldadd(){ increases the cold_count variable by 1 everytime the participant responds to a question in a way that suggests they have a cold
+	 // Based on whether they push the yes or no button as a response to the question
+        function coldAdd(){
+            cold_count = cold_count + 1;
+	    
+	
+        }
+
+	// The function showResults() calculates and displays the probability that you have a cold versus allergies based on the count or amount of points you gave allergy_add and cold_add which is based on your responses and whether you answered yes or no to the question.
+	function showResults() {
+        // The variable totalCount adds up the the total number of points accumulated ( the total number of times your answer hinted towards allergies or a cold)
+        var totalCount = allergy_count + cold_count;
+	// The variable allergyPercent calculates the percentage of times the participant responded to a question ( by clicking yes or no) and their answer was matching with allergies
+	// Divides allergy_count by totalCount and then multiplies it by 100
+        var allergyPercent = (allergy_count / totalCount) * 100;
+	// The variable coldPercent calculates the percentage of times the participant responded to a question ( by clicking yes or no) and their answer was matching with cold
+	// Divides cold_count by totalCount and then multiplies it by 100
+        var coldPercent = (cold_count / totalCount) * 100;
+
+        // The line document.getElementbyId("results") finds an HTML element with the ID results
+        var resultText = document.getElementById("results");
+	// innerHTML updates the content in the HTML element with the ID results with the calculated percentages for allergies versus cold 
+	// .toFixed(2) formats the percentages to 2 decimal places 
+        resultText.innerHTML = "Probability it is allergies = " + allergyPercent.toFixed(2) + "%" + 
+                               "<br> Probability it is a cold = " + coldPercent.toFixed(2) + "%"; 
+    }
 
 </script>	
 
