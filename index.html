@@ -38,13 +38,13 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 <script>
 
 	// Our two variables are declared here
-	// allergy_count tracks how many times the participant indicates they have allergies
-	// cold_count tracks how many times the participant indiciates they have a cold
+	// migraine_count tracks how many times the participant indicates they have a migraine
+	// tensionheadache_count tracks how many times the participant indiciates they have a tension headache
 	// Both variables are initially set to zero because there have been no inputs yet
         var migraine_count = 0;
         var tensionheadache_count = 0;
 
-        // The function allergyadd(){ increases the allergy_count variable by 1 everytime the participant responds to a question in a way that suggests they have allergies
+        // The function migraineadd(){ increases the migraine_count variable by 1 everytime the participant responds to a question in a way that suggests they have a migraine
 	// Based on whether they push the yes or no button as a response to the question
         function migraineAdd(){
             migraine_count = migraine_count + 1;
@@ -52,7 +52,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
         }
 
-	 // The function coldadd(){ increases the cold_count variable by 1 everytime the participant responds to a question in a way that suggests they have a cold
+	 // The function tensionheadacheadd(){ increases the tensionheadache_count variable by 1 everytime the participant responds to a question in a way that suggests they have a tension headache
 	 // Based on whether they push the yes or no button as a response to the question
         function tensionheadacheAdd(){
             tensionheadache_count = tensionheadache_count + 1;
@@ -60,20 +60,20 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	
         }
 
-	// The function showResults() calculates and displays the probability that you have a cold versus allergies based on the count or amount of points you gave allergy_add and cold_add which is based on your responses and whether you answered yes or no to the question.
+	// The function showResults() calculates and displays the probability that you have a migraine versus a tension headache based on the count or amount of points you gave tensionheadache_add and migraine_add which is based on your responses and whether you answered yes or no to the question.
 	function showResults() {
-        // The variable totalCount adds up the the total number of points accumulated ( the total number of times your answer hinted towards allergies or a cold)
+        // The variable totalCount adds up the the total number of points accumulated ( the total number of times your answer hinted towards a tension headache or a migraine)
         var totalCount = migraine_count + tensionheadache_count;
-	// The variable allergyPercent calculates the percentage of times the participant responded to a question ( by clicking yes or no) and their answer was matching with allergies
-	// Divides allergy_count by totalCount and then multiplies it by 100
+	// The variable migrainePercent calculates the percentage of times the participant responded to a question ( by clicking yes or no) and their answer was matching with migraine
+	// Divides migraine_count by totalCount and then multiplies it by 100
         var migrainePercent = (migraine_count / totalCount) * 100;
-	// The variable coldPercent calculates the percentage of times the participant responded to a question ( by clicking yes or no) and their answer was matching with cold
-	// Divides cold_count by totalCount and then multiplies it by 100
+	// The variable tensionheadachePercent calculates the percentage of times the participant responded to a question ( by clicking yes or no) and their answer was matching with tension headache
+	// Divides tensionheadache_count by totalCount and then multiplies it by 100
         var tensionheadachePercent = (tensionheadache_count / totalCount) * 100;
 
         // The line document.getElementbyId("results") finds an HTML element with the ID results
         var resultText = document.getElementById("results");
-	// innerHTML updates the content in the HTML element with the ID results with the calculated percentages for allergies versus cold 
+	// innerHTML updates the content in the HTML element with the ID results with the calculated percentages for migraine versus tension headache
 	// .toFixed(2) formats the percentages to 2 decimal places 
         resultText.innerHTML = "Probability it is migraine = " + migrainePercent.toFixed(2) + "%" + 
                                "<br> Probability it is a tension headache = " + tensionheadachePercent.toFixed(2) + "%"; 
